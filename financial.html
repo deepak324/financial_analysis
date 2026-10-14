@@ -7519,36 +7519,31 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="M508-Big-Data-Analytics-%E2%80%94-NLP-project">M508 Big Data Analytics — NLP project<a class="anchor-link" href="#M508-Big-Data-Analytics-%E2%80%94-NLP-project">¶</a></h1><h2 id="Project-title:-Consumer-Financial-Complaint-Classification-Using-Natural-Language-Processing">Project title: Consumer Financial Complaint Classification Using Natural Language Processing<a class="anchor-link" href="#Project-title:-Consumer-Financial-Complaint-Classification-Using-Natural-Language-Processing">¶</a></h2><p><strong>1. Dataset selection and project objective</strong>
 <strong>Dataset:</strong> Consumer Complaints Dataset for NLP
-<strong>Source:</strong> Download the dataset from Kaggle</p>
-<p>The dataset contains written consumer complaints about financial products. The exact number of rows, available columns, and category names depend on the version downloaded, so these should be confirmed during the data inspection stage.</p>
-<p>**1.1 Business problem****
-Financial organisations receive many written complaints from customers. These complaints can describe problems with credit reporting, debt collection, loans, credit cards, and other financial services. Employees need to read each complaint and decide which team should handle it.
-When the number of complaints increases, manual classification can become slow. Similar complaints may also be sent to different departments depending on who reads them. This can create additional work and delay the response to customers.</p>
-<p>The purpose of this project is to develop an NLP system that reads a complaint narrative and predicts the most likely financial product category.</p>
-<p>For example, if a customer writes about incorrect information on a credit report, the system may predict the relevant credit-reporting category. A complaint concerning repeated debt-collection calls may be assigned to a debt-collection category.</p>
-<p>These are illustrative examples; the actual predictions depend on the dataset labels and the trained model.</p>
-<p><strong>1.2 Why this problem is suitable for NLP</strong>
-The input is unstructured text. Customers do not necessarily use the same words to describe the same problem. One customer may write that a payment was taken incorrectly, while another may describe an unauthorised transaction.</p>
-<p>NLP helps convert this text into a representation that a machine-learning model can process.
-The project will investigate the following questions:</p>
+<strong>Source:</strong> <strong>Source:</strong> <a href="https://www.kaggle.com/datasets/shashwatwork/consume-complaints-dataset-fo-nlp">https://www.kaggle.com/datasets/shashwatwork/consume-complaints-dataset-fo-nlp</a></p>
+<p><strong>1.1 Business problem</strong>
+Banks and financial firms receive thousands of written complaints about credit reports, debt collection, loans, cards and banking. Staff currently read each one and decide which team should handle it. When volume grows, this becomes slow and inconsistent — the same type of complaint can end up in different departments depending on who reads it.</p>
+<p>This project builds an NLP system that reads the complaint text and predicts the most likely product category so complaints can be routed faster.</p>
+<p><strong>1.2 Why NLP fits</strong>
+Complaints are free-text. Customers describe the same problem in many different ways. NLP turns that unstructured text into features a model can learn from.</p>
+<p><strong>Questions this project answers</strong></p>
 <ul>
-<li>Can complaint narratives be used to predict financial product categories?</li>
-<li>Which traditional machine-learning model performs best?</li>
-<li>Does the model perform equally well across all categories?</li>
-<li>Which types of complaints are frequently misclassified?</li>
-<li>Could the model assist employees with the initial routing of complaints?
-<strong>1.3 Project objectives</strong></li>
+<li>Can complaint text predict the product category?</li>
+<li>Which traditional model works best?</li>
+<li>Does performance stay even across all categories?</li>
+<li>Where does the model fail most often?</li>
+<li>Could it help staff with initial routing?</li>
 </ul>
+<p><strong>1.3 Objectives</strong></p>
 <ol>
-<li>Explore and prepare the complaint dataset.</li>
-<li>Investigate missing values, duplicate records, text lengths, and category imbalance.</li>
-<li>Convert textual complaints into numerical features using TF-IDF.</li>
-<li>Train and compare several classification models.</li>
-<li>Evaluate performance using appropriate metrics.</li>
-<li>Examine incorrect predictions to understand the limitations.</li>
-<li>Make evidence-based recommendations for a possible business application.</li>
+<li>Explore and clean the data</li>
+<li>Check imbalance, missing values and text length</li>
+<li>Convert text to TF-IDF features</li>
+<li>Train and compare classifiers</li>
+<li>Evaluate with proper metrics</li>
+<li>Analyse errors</li>
+<li>Give practical business recommendations</li>
 </ol>
-<p>The model will predict a category, not decide whether a complaint is genuine, whether a company has broken a law, or whether compensation should be provided.</p>
+<p>The model only predicts a category. It does not decide if a complaint is valid or what compensation is due.</p>
 </div>
 </div>
 </div>
@@ -7559,25 +7554,15 @@ The project will investigate the following questions:</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="2.-High-level-system-design">2. High-level system design<a class="anchor-link" href="#2.-High-level-system-design">¶</a></h1><p>The proposed NLP system follows the pipeline below.</p>
-<pre><code>1. Data collection
-    Download the public complaint dataset
-
-2. Data inspection and cleaning
-    Check missing data, duplicates, labels, and text quality
-
-3. Text preprocessing and feature extraction
-    Normalise text and transform it using TF-IDF
-
-4. Model training
-    Naive Bayes, Logistic Regression, and Linear SVM
-
-5. Evaluation and error analysis
-    Macro-F1, precision, recall, confusion matrix, and errors
-
-6. Business recommendations
-    Recommend human-reviewed complaint routing</code></pre>
-<p>Each stage has a specific purpose. Data cleaning improves the consistency of the input. TF-IDF converts text into numerical features. The classification models learn relationships between those features and the known categories. Evaluation then checks how well the trained models predict complaints they have not seen during training.</p>
+<h1 id="2.-High-level-system-design">2. High-level system design<a class="anchor-link" href="#2.-High-level-system-design">¶</a></h1><ol>
+<li><strong>Data collection</strong> – download the public complaint dataset</li>
+<li><strong>Inspection &amp; cleaning</strong> – missing values, duplicates, label quality</li>
+<li><strong>Preprocessing &amp; TF-IDF</strong> – normalise text and turn it into numbers</li>
+<li><strong>Model training</strong> – Naive Bayes, Logistic Regression, Linear SVM</li>
+<li><strong>Evaluation &amp; error analysis</strong> – macro-F1, precision, recall, confusion matrix</li>
+<li><strong>Business recommendations</strong> – human-reviewed routing suggestions</li>
+</ol>
+<p>Each step has a clear role: cleaning makes the input consistent, TF-IDF creates usable features, models learn the patterns, and evaluation shows how well the system works on unseen complaints.</p>
 </div>
 </div>
 </div>
@@ -7740,12 +7725,12 @@ Column names:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="4.-Identify-the-text-and-target-columns">4. Identify the text and target columns<a class="anchor-link" href="#4.-Identify-the-text-and-target-columns">¶</a></h1><p>The model requires two main columns:</p>
+<h1 id="4.-Identify-the-text-and-target-columns">4. Identify the text and target columns<a class="anchor-link" href="#4.-Identify-the-text-and-target-columns">¶</a></h1><p>The model needs two columns:</p>
 <ul>
-<li>Text: the written complaint.</li>
-<li>Target: the product category we want to predict.
-The following code looks for common column names. Check the detected names carefully because different versions of the dataset may use different schemas.</li>
+<li><strong>text</strong> – the written complaint</li>
+<li><strong>label</strong> – the product category to predict</li>
 </ul>
+<p>The code below looks for common column names. Different versions of the dataset may use different names, so always check what is detected.</p>
 </div>
 </div>
 </div>
@@ -7937,8 +7922,8 @@ Number of product categories: 5
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
-<p>We retain only the complaint narrative and target label because they are the main fields required for this experiment. Blank narratives cannot provide textual features, and records without a known label cannot be used as supervised training examples.
-This does not mean that every other column in the original dataset is useless. Other fields could support future projects, but the present task focuses on classifying complaint text.</p>
+<p><strong>Why keep only text and label?</strong><br/>
+These two fields are all we need for classification. Blank narratives give no features and records without a label cannot be used for supervised training. Other columns could be useful later, but this project focuses on the text itself.</p>
 </div>
 </div>
 </div>
@@ -7949,7 +7934,7 @@ This does not mean that every other column in the original dataset is useless. O
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="5.-Data-quality-checks-and-exploratory-data-analysis">5. Data-quality checks and exploratory data analysis<a class="anchor-link" href="#5.-Data-quality-checks-and-exploratory-data-analysis">¶</a></h1><p>Before training a model, we need to understand the dataset. A model can produce misleading results if the labels are inconsistent, many complaints are missing, or the classes are heavily imbalanced.</p>
+<h1 id="5.-Data-quality-checks-and-exploratory-data-analysis">5. Data-quality checks and exploratory data analysis<a class="anchor-link" href="#5.-Data-quality-checks-and-exploratory-data-analysis">¶</a></h1><p>Before training anything we need to know the data. Missing values, duplicates or heavy class imbalance can make results look better (or worse) than they really are.</p>
 </div>
 </div>
 </div>
@@ -8011,8 +7996,8 @@ Duplicate narratives, regardless of label:
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
-<p>These checks identify possible data-quality problems. Duplicate narratives with different labels deserve particular attention because they may indicate inconsistent labelling, although there can also be legitimate reasons for repeated wording.
-For the initial experiment, report the duplicate counts rather than automatically deleting every duplicate. If you decide to remove records, explain your reason and document the effect on the dataset.</p>
+<p><strong>Note on duplicates</strong><br/>
+Duplicate text with different labels can signal inconsistent labelling. For now I just report the counts. Removing them is optional — if you do remove any, document why and how many rows were affected.</p>
 </div>
 </div>
 </div>
@@ -8194,8 +8179,8 @@ For the initial experiment, report the duplicate counts rather than automaticall
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
-<p>The chart shows how complaints are distributed across categories. If one category contains many more examples than another, the dataset is imbalanced.
-This matters because a model can achieve a high accuracy by predicting common categories while performing poorly on less frequent ones. We will therefore examine macro-F1 and class-level recall later.</p>
+<p><strong>Class distribution</strong><br/>
+One category (credit reporting) dominates. Accuracy alone can look good just by predicting the majority class. That is why we will also look at macro-F1 and per-class recall.</p>
 </div>
 </div>
 </div>
@@ -8327,8 +8312,8 @@ This matters because a model can achieve a high accuracy by predicting common ca
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
-<p>Some complaints may contain only a few sentences, while others may contain detailed histories. Longer narratives can provide more information, but they can also increase processing requirements and contain details unrelated to the category.
-The chart caps the displayed word count at the 99th percentile to make the distribution easier to see. It does not remove long complaints from the dataset.</p>
+<p><strong>Text length</strong><br/>
+Some complaints are very short, others are long. The chart is capped at the 99th percentile so the distribution is easier to read. Long complaints are still kept in the data.</p>
 </div>
 </div>
 </div>
@@ -8339,9 +8324,7 @@ The chart caps the displayed word count at the 99th percentile to make the distr
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="6.-Text-preprocessing">6. Text preprocessing<a class="anchor-link" href="#6.-Text-preprocessing">¶</a></h1><p>Text preprocessing prepares the narrative for feature extraction. It should improve consistency without removing useful information.
-For example, a complaint may state, “I did not authorise this payment.” Removing the word “not” could change the meaning. Similarly, product names and financial terms may help distinguish one category from another.
-For this reason, we will start with light preprocessing rather than aggressively removing punctuation, numbers, and stop words.</p>
+<h1 id="6.-Text-preprocessing">6. Text preprocessing<a class="anchor-link" href="#6.-Text-preprocessing">¶</a></h1><p>I keep preprocessing light. Lowercasing and cleaning URLs help consistency, but aggressive removal of stop-words or stemming can destroy meaning (e.g. “not authorised”). Product names and financial terms are often useful signals, so they stay.</p>
 </div>
 </div>
 </div>
@@ -8457,8 +8440,8 @@ For this reason, we will start with light preprocessing rather than aggressively
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
-<p>Lowercasing makes words such as “Bank” and “bank” more consistent. Replacing URLs avoids treating every web address as a separate feature. Normalising whitespace makes the text easier to process.
-We are not removing stop words or applying stemming at this stage. These could be tested later as alternative design choices, but they should not be assumed to improve performance.</p>
+<p><strong>What the cleaner does</strong><br/>
+Lowercasing makes “Bank” and “bank” the same. URLs are replaced so every web address does not become a unique feature. Extra whitespace is removed. Stop-word removal and stemming are left for later experiments.</p>
 </div>
 </div>
 </div>
@@ -8469,13 +8452,7 @@ We are not removing stop words or applying stemming at this stage. These could b
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="7.-Split-the-data-into-training-and-test-sets">7. Split the data into training and test sets<a class="anchor-link" href="#7.-Split-the-data-into-training-and-test-sets">¶</a></h1><p>The model needs one set of examples to learn from and another set to evaluate its predictions.
-We will use an 80/20 split:</p>
-<ul>
-<li>80% for model development.</li>
-<li>20% for final evaluation.
-Stratification attempts to preserve the category proportions in both sets.</li>
-</ul>
+<h1 id="7.-Split-the-data-into-training-and-test-sets">7. Split the data into training and test sets<a class="anchor-link" href="#7.-Split-the-data-into-training-and-test-sets">¶</a></h1><p>80 % for training, 20 % for final evaluation. Stratified so both sets keep roughly the same category mix. The test set is touched only once, at the end.</p>
 </div>
 </div>
 </div>
@@ -8661,8 +8638,8 @@ Test class proportions:
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
-<p>The random_state=42 setting makes the split reproducible. Stratification is useful because we want the training and test sets to contain representative examples of the available categories.
-We should not use the test set to choose preprocessing settings, tune model parameters, or repeatedly select the best model. Those decisions should be made using the training data and cross-validation.</p>
+<p><strong>Reproducibility</strong><br/>
+<code>random_state=42</code> keeps the split the same every run. All tuning and model choice happen on the training data (via cross-validation). The test set stays completely held out.</p>
 </div>
 </div>
 </div>
@@ -8673,8 +8650,7 @@ We should not use the test set to choose preprocessing settings, tune model para
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="8.-Feature-engineering-with-TF-IDF">8. Feature engineering with TF-IDF<a class="anchor-link" href="#8.-Feature-engineering-with-TF-IDF">¶</a></h1><p>Machine-learning models cannot directly understand text, so the complaint narratives must be converted into numerical values. I use TF-IDF (Term Frequency–Inverse Document Frequency) to represent the importance of words in each complaint. Words that are frequent in one complaint but less common across the dataset can receive higher weights.</p>
-<p>I also use unigrams and bigrams. Unigrams are individual words, such as <em>payment</em>, while bigrams are pairs of words, such as <em>late payment</em>. This helps the model identify useful terms and short phrases when classifying complaints.</p>
+<h1 id="8.-Feature-engineering-with-TF-IDF">8. Feature engineering with TF-IDF<a class="anchor-link" href="#8.-Feature-engineering-with-TF-IDF">¶</a></h1><p>Models need numbers, not raw text. TF-IDF weights words that appear often in one complaint but rarely across the whole set. I use both unigrams (single words) and bigrams (word pairs such as “late payment”) so the model can catch useful short phrases.</p>
 </div>
 </div>
 </div>
@@ -8732,12 +8708,32 @@ Number of vocabulary terms: 50000
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="9.-Build-and-compare-machine-learning-models">9. Build and compare machine-learning models<a class="anchor-link" href="#9.-Build-and-compare-machine-learning-models">¶</a></h1><p>We will compare four approaches.
-Model	Purpose
-Majority baseline	Establishes a simple reference score
-Multinomial Naive Bayes	Provides a fast text-classification baseline
-Logistic Regression	Provides a strong linear model for text features
-Linear SVM	Tests another classifier commonly effective with sparse text</p>
+<h1 id="9.-Build-and-compare-machine-learning-models">9. Build and compare machine-learning models<a class="anchor-link" href="#9.-Build-and-compare-machine-learning-models">¶</a></h1><h1 id="9.-Models-to-compare">9. Models to compare<a class="anchor-link" href="#9.-Models-to-compare">¶</a></h1><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Why include it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Majority baseline</td>
+<td>Simple reference score</td>
+</tr>
+<tr>
+<td>Multinomial Naive Bayes</td>
+<td>Fast classic text classifier</td>
+</tr>
+<tr>
+<td>Logistic Regression</td>
+<td>Strong linear model for text</td>
+</tr>
+<tr>
+<td>Linear SVM</td>
+<td>Often works well with sparse TF-IDF features</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -8819,9 +8815,8 @@ Linear SVM	Tests another classifier commonly effective with sparse text</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
-<p>Each pipeline combines text vectorisation with classification. This makes it easier to train the complete process and reduces the risk of accidentally fitting TF-IDF using the test data.
-The class_weight="balanced" setting tells Logistic Regression and Linear SVM to give more influence to less frequent classes. This can help with class imbalance, although it does not guarantee that every category will improve.
-The settings are starting points, not proven optimal values. We will use cross-validation to compare the models more fairly.</p>
+<p><strong>Pipeline notes</strong><br/>
+Each model is wrapped with its own TF-IDF step so vectorisation never sees the test data. <code>class_weight="balanced"</code> gives minority classes more influence. These are starting settings — cross-validation will tell us which model is actually best.</p>
 </div>
 </div>
 </div>
@@ -8833,8 +8828,7 @@ The settings are starting points, not proven optimal values. We will use cross-v
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>9.1 Why use a majority baseline?</strong></p>
-<p>The baseline provides a reference point. If the majority category represents a large proportion of the dataset, a model that predicts that category every time may achieve reasonable accuracy without understanding any complaint text.
-The machine-learning models should be assessed against this reference. The goal is not simply to obtain a high score, but to demonstrate that analysing the complaint text improves classification.</p>
+<p>If one category is very common, always predicting that category can give decent accuracy without reading any text. The real models need to beat this baseline to show that the complaint text actually helps.</p>
 </div>
 </div>
 </div>
@@ -8985,9 +8979,8 @@ Evaluating: Linear SVM
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
-<p>Three-fold cross-validation divides the training data into three parts. Each model is trained and evaluated three times, using a different fold for validation each time.
-The mean macro-F1 summarises performance across the folds. Its standard deviation provides an indication of how much the score varies between folds. A smaller variation can suggest more consistent performance, although it does not prove that the model will perform equally well on future data.
-Cross-validation is used here to choose a model. The test set remains separate until the final evaluation.</p>
+<p><strong>Cross-validation</strong><br/>
+3-fold stratified CV on the training data. Mean macro-F1 shows average performance; the standard deviation shows how stable the score is across folds. The test set is still untouched.</p>
 </div>
 </div>
 </div>
@@ -8998,8 +8991,7 @@ Cross-validation is used here to choose a model. The test set remains separate u
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="10.-Final-model-evaluation">10. Final model evaluation<a class="anchor-link" href="#10.-Final-model-evaluation">¶</a></h1><p>After comparing the cross-validation results, we select the model with the highest mean macro-F1. We then fit it on the full training set and evaluate it on the held-out test set.
-This is more methodologically sound than choosing the best model by looking at test scores for every candidate.</p>
+<h1 id="10.-Final-model-evaluation">10. Final model evaluation<a class="anchor-link" href="#10.-Final-model-evaluation">¶</a></h1><p>I pick the model with the highest mean macro-F1 from cross-validation, retrain it on the full training set, and evaluate once on the held-out test set. This avoids choosing a model by peeking at test scores.</p>
 </div>
 </div>
 </div>
@@ -9179,17 +9171,14 @@ mortgages_and_loans       0.85      0.86      0.86      3798
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>How to understand the results</p>
+<p><strong>How to read the metrics</strong></p>
 <ul>
-<li>Accuracy: the proportion of all test examples predicted correctly.</li>
-<li>Precision: among the complaints assigned to a category, the proportion that truly belong to it.</li>
-<li>Recall: among complaints that actually belong to a category, the proportion correctly identified.</li>
-<li>F1-score: a combined measure of precision and recall.</li>
-<li>Macro-F1: the average F1-score across categories, giving each category equal weight.</li>
-<li>Weighted-F1: the average F1-score weighted by the number of examples in each category.
-For complaint routing, recall is important because a complaint sent to the wrong department may be delayed. Precision is also important because too many incorrect suggestions can create additional work for employees.
-Neither metric should be interpreted in isolation. A model that improves recall may also produce more false-positive routing suggestions. The final decision should reflect the operational needs of the business.</li>
+<li><strong>Accuracy</strong> – overall correct predictions</li>
+<li><strong>Precision</strong> – of the complaints sent to a category, how many truly belong there</li>
+<li><strong>Recall</strong> – of the real complaints in a category, how many were found</li>
+<li><strong>F1 / Macro-F1</strong> – balance of precision and recall (macro treats every class equally)</li>
 </ul>
+<p>For routing, both precision and recall matter. Low recall means complaints go to the wrong team; low precision means staff waste time on false suggestions.</p>
 </div>
 </div>
 </div>
@@ -9200,7 +9189,7 @@ Neither metric should be interpreted in isolation. A model that improves recall 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="11.-Confusion-matrix">11. Confusion matrix<a class="anchor-link" href="#11.-Confusion-matrix">¶</a></h1><p>A confusion matrix shows which categories the model predicts correctly and which categories it confuses.</p>
+<h1 id="11.-Confusion-matrix">11. Confusion matrix<a class="anchor-link" href="#11.-Confusion-matrix">¶</a></h1><p>Shows which categories are predicted correctly and which pairs are most often confused.</p>
 </div>
 </div>
 </div>
@@ -9256,9 +9245,8 @@ Neither metric should be interpreted in isolation. A model that improves recall 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
-<p>The matrix is normalised by actual category, so each row shows the proportion of examples from that category assigned to each predicted category.
-The diagonal represents correct classifications. Values away from the diagonal represent misclassifications.
-When interpreting this chart, investigate which categories have the weakest recall and which pairs of categories are frequently confused. Similar financial terms or complaints involving more than one product could explain some errors, but these explanations should be checked against the actual examples.</p>
+<p><strong>Reading the matrix</strong><br/>
+Rows are true labels, columns are predictions. The diagonal is correct. Off-diagonal cells show the main confusions. Check which categories have weak recall and which pairs share similar language.</p>
 </div>
 </div>
 </div>
@@ -9269,7 +9257,7 @@ When interpreting this chart, investigate which categories have the weakest reca
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="12.-Error-analysis">12. Error analysis<a class="anchor-link" href="#12.-Error-analysis">¶</a></h1><p>A good NLP project should investigate incorrect predictions rather than report metrics alone. Error analysis helps identify where the system needs improvement.</p>
+<h1 id="12.-Error-analysis">12. Error analysis<a class="anchor-link" href="#12.-Error-analysis">¶</a></h1><p>Metrics alone are not enough. Looking at actual mistakes shows where the system still needs work.</p>
 </div>
 </div>
 </div>
@@ -9542,16 +9530,8 @@ When interpreting this chart, investigate which categories have the weakest reca
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
-<p>The first output shows individual examples that the model classified incorrectly. The second output identifies category pairs that are frequently confused.
-When reviewing these errors, consider the following questions:</p>
-<ol>
-<li>Does the complaint discuss more than one financial product?</li>
-<li>Is the text too short to provide sufficient information?</li>
-<li>Are similar words used across different categories?</li>
-<li>Could the original label be incorrect or overly broad?</li>
-<li>Would bigram features or different preprocessing improve the distinction?
-Do not publish raw complaints containing personal information. For an academic discussion, paraphrase examples or mask identifying details.</li>
-</ol>
+<p><strong>What the errors show</strong><br/>
+Many mistakes involve short text, complaints that mention more than one product, or language that appears in several categories. The most common confusion is between credit reporting and debt collection. Always mask personal details if you discuss individual examples.</p>
 </div>
 </div>
 </div>
@@ -9562,9 +9542,7 @@ Do not publish raw complaints containing personal information. For an academic d
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="13.-Model-tuning-and-possible-improvements">13. Model tuning and possible improvements<a class="anchor-link" href="#13.-Model-tuning-and-possible-improvements">¶</a></h1><p>The initial models use fixed parameters. A further experiment could investigate whether changing these parameters improves performance.
-For example, Logistic Regression uses a parameter called C, which controls the strength of regularisation. Testing different values may help find a useful balance between fitting the training data and generalising to new complaints.
-For a final experiment, perform this tuning on the training data and then evaluate the selected model on the test set. If you want to include the following code, run it before the final test-evaluation section above, and use its fitted model for the final evaluation instead of selecting a model from test results.</p>
+<h1 id="13.-Model-tuning-and-possible-improvements">13. Model tuning and possible improvements<a class="anchor-link" href="#13.-Model-tuning-and-possible-improvements">¶</a></h1><p>The first models used fixed settings. Here I try three values of the regularisation parameter C for Logistic Regression using cross-validation on the training data only.</p>
 </div>
 </div>
 </div>
@@ -9643,9 +9621,8 @@ Best cross-validation macro-F1: 0.8408
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Result:</strong></p>
-<p>This experiment compares three values of C using cross-validation. The best value is selected according to the mean validation macro-F1.
-Tuning does not guarantee an improvement. If the scores are similar, the simpler configuration may be sufficient. The results should determine the conclusion.</p>
+<p><strong>Tuning result</strong><br/>
+The best C is chosen by mean validation macro-F1. If the scores are close, the simpler setting is usually fine.</p>
 </div>
 </div>
 </div>
@@ -9656,38 +9633,28 @@ Tuning does not guarantee an improvement. If the scores are similar, the simpler
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="14.-Critical-discussion-of-the-complete-pipeline">14. Critical discussion of the complete pipeline<a class="anchor-link" href="#14.-Critical-discussion-of-the-complete-pipeline">¶</a></h1><p>Use this section to organise your own discussion after running the experiment. The statements about performance must be supported by the results you obtained.</p>
-<p><strong>14.1 Overall performance</strong>
-First, compare the selected machine-learning model with the majority baseline. If the selected model achieves a higher macro-F1, this suggests that the textual features provide useful information for distinguishing complaint categories.
-However, a single overall score is not enough. The classification report should be examined to identify categories with relatively weak precision or recall. A model may perform well for common categories but struggle with less frequent ones.
-You should also compare the cross-validation results with the final test results. A substantial difference may suggest that performance varies across data splits or that the model does not generalise as well as expected.</p>
-<p><strong>14.2 Strengths of the proposed system</strong>
-The proposed system has several advantages.
-First, it provides a clear and measurable business task. The predicted category can be compared with the existing label, allowing the model to be evaluated quantitatively.
-Second, TF-IDF is a practical way to convert complaint text into numerical features. It allows traditional classifiers to learn useful patterns without requiring a large neural network.
-Third, the use of a baseline and multiple classifiers provides a structured comparison rather than relying on one model without justification.
-Finally, the confusion matrix and error analysis help explain where the system performs well and where it may need further work.</p>
-<p><strong>14.3 Limitations</strong>
-The system also has important limitations.</p>
-<ul>
-<li>Imbalanced categories: less frequent classes may have too few examples to learn their language patterns effectively.</li>
-<li>Overlapping language: complaints about different financial products may use similar words.</li>
-<li>Historical labels: the model learns from the categories already assigned in the dataset. Incorrect labels can affect training.</li>
-<li>Changing language: new products, regulations, and customer behaviour may change the wording of complaints.</li>
-<li>Privacy: complaint narratives can contain personal and financial information that requires appropriate protection.</li>
-<li>Limited operational evidence: a good test score does not demonstrate that the system will reduce costs or improve customer satisfaction in a real organisation.
-The model should therefore be treated as a decision-support tool until its performance and operational impact have been assessed in a real setting.</li>
+<h1 id="14.-Critical-discussion">14. Critical discussion<a class="anchor-link" href="#14.-Critical-discussion">¶</a></h1><h3 id="Overall-performance">Overall performance<a class="anchor-link" href="#Overall-performance">¶</a></h3><p>Linear SVM beat the majority baseline clearly (macro-F1 ≈ 0.86 on the test set). That shows the complaint text does contain useful signals. Performance is not equal across categories — the majority class is easier, while smaller classes are harder.</p>
+<h3 id="Strengths">Strengths<a class="anchor-link" href="#Strengths">¶</a></h3><ul>
+<li>Clear, measurable task</li>
+<li>TF-IDF is simple and effective for this size of data</li>
+<li>Baseline + several models give a fair comparison</li>
+<li>Confusion matrix and error analysis show where the system fails</li>
 </ul>
-<p><strong>14.4 Business recommendations</strong>
-Based on the actual findings, consider the following recommendations.</p>
-<ol>
-<li>Introduce human-reviewed routing. Use predictions to suggest a department, while allowing employees to confirm or correct the result.</li>
-<li>Monitor each category. Track precision and recall separately so that weaker categories are not hidden by the overall score.</li>
-<li>Review uncertain cases. If a probability-based model is used, validate its probability estimates before establishing a confidence threshold. Linear SVM scores are not probabilities by default.</li>
-<li>Improve training data. Review repeated errors and incorrect labels before adding more data to the model.</li>
-<li>Monitor performance over time. Re-evaluate the model when complaint language, product categories, or class proportions change.</li>
-<li>Protect sensitive information. Restrict access to complaint text and avoid retaining personal information that is not needed.
-A pilot should measure whether the system actually improves routing time, reduces incorrect assignments, or decreases staff workload. These benefits should not be claimed solely from the model's classification metrics.</li>
+<h3 id="Limitations">Limitations<a class="anchor-link" href="#Limitations">¶</a></h3><ul>
+<li>Class imbalance hurts minority categories</li>
+<li>Language overlaps (credit reporting vs debt collection)</li>
+<li>Labels may contain errors</li>
+<li>Customer language changes over time</li>
+<li>Privacy: complaint text can contain sensitive data</li>
+<li>Good test scores do not automatically mean lower cost or happier customers in production</li>
+</ul>
+<h3 id="Business-recommendations">Business recommendations<a class="anchor-link" href="#Business-recommendations">¶</a></h3><ol>
+<li>Use the model only as a suggestion — staff should still confirm the category</li>
+<li>Track precision and recall per category, not just overall accuracy</li>
+<li>Review the most common error pairs and fix labels where possible</li>
+<li>Re-train when products or language change</li>
+<li>Keep personal data protected</li>
+<li>Run a small pilot first to measure real impact on routing time and workload</li>
 </ol>
 </div>
 </div>
@@ -9699,12 +9666,9 @@ A pilot should measure whether the system actually improves routing time, reduce
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="15.-Conclusion">15. Conclusion<a class="anchor-link" href="#15.-Conclusion">¶</a></h1><p>This project looked at a practical problem many financial companies face every day: how to quickly sort customer complaints into the right category so the correct team can handle them. The five main groups were credit reporting, debt collection, credit cards, mortgages and loans, and retail banking.</p>
-<p>I converted the complaint text into numbers using TF-IDF, a method that focuses on important words and short phrases. Then I compared four models: a simple majority baseline, Naive Bayes, Logistic Regression, and Linear SVM.</p>
-<p>Linear SVM performed the best. It reached about 0.85 macro-F1 during cross-validation and 89% accuracy with a macro-F1 of 0.86 on the final test set. These results are clearly better than simply always choosing the most common category.</p>
-<p>When I examined the mistakes, the model most often confused credit reporting with debt collection. Many errors happened because the complaints were very short, mentioned more than one product, or used everyday language that appears in several different categories.</p>
-<p>Before introducing a system like this in a real company, it should only be used as a helpful suggestion tool. Staff should still review the results, especially when the case looks unclear. The company should also track performance for each category separately, keep the training data clean and up to date, protect customer privacy carefully, and run a small pilot first to check whether the system actually saves time and reduces mistakes.</p>
-<p>Overall, the results show that complaint text contains useful information for automatic sorting. However, the model works best when humans remain involved and the system is monitored over time as products and customer language change.</p>
+<h1 id="15.-Conclusion">15. Conclusion<a class="anchor-link" href="#15.-Conclusion">¶</a></h1><p>Financial firms need a faster way to route written complaints. This project turned complaint text into TF-IDF features and compared a majority baseline, Naive Bayes, Logistic Regression and Linear SVM.</p>
+<p>Linear SVM performed best (≈ 0.85 macro-F1 in CV, 0.86 on the test set, 89 % accuracy). It clearly beat the baseline. The main confusions were between credit reporting and debt collection, often caused by short text or overlapping language.</p>
+<p>In a real setting the model should only suggest a category. Staff review, per-class monitoring, clean training data and a proper pilot are all needed before claiming business benefits. Overall the results show that complaint text is useful for automatic sorting, but human oversight remains essential.</p>
 </div>
 </div>
 </div>
@@ -9715,13 +9679,9 @@ A pilot should measure whether the system actually improves routing time, reduce
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="16.-Harvard-references">16. Harvard references<a class="anchor-link" href="#16.-Harvard-references">¶</a></h1><p>Use the following as a starting point and verify each source before submission.
-Dataset
-Shashwatwork (n.d.) Consumer Complaints Dataset for NLP. Kaggle. Available at: <a href="https://www.kaggle.com/datasets/shashwatwork/consume-complaints-dataset-fo-nlp">https://www.kaggle.com/datasets/shashwatwork/consume-complaints-dataset-fo-nlp</a> (Accessed: insert your actual access date).
-Technical documentation
-Scikit-learn (n.d.) Working with text data. Available at: <a href="https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html">https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html</a> (Accessed: insert your actual access date).
-Scikit-learn (n.d.) Tuning the hyper-parameters of an estimator. Available at: <a href="https://scikit-learn.org/stable/modules/grid_search.html">https://scikit-learn.org/stable/modules/grid_search.html</a> (Accessed: insert your actual access date).
-Only include sources you have actually consulted. Confirm the dataset's authorship, date, licence, and exact title from its source page, and apply GISMA's Harvard referencing guidance.</p>
+<h1 id="16.-References-(Harvard)">16. References (Harvard)<a class="anchor-link" href="#16.-References-(Harvard)">¶</a></h1><p>Shashwatwork (n.d.) <em>Consumer Complaints Dataset for NLP</em>. Kaggle. Available at: <a href="https://www.kaggle.com/datasets/shashwatwork/consume-complaints-dataset-fo-nlp">https://www.kaggle.com/datasets/shashwatwork/consume-complaints-dataset-fo-nlp</a> (Accessed: 10 October 2026).</p>
+<p>Scikit-learn (n.d.) <em>Working with text data</em>. Available at: <a href="https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html">https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html</a> (Accessed: 10 October 2026).</p>
+<p>Scikit-learn (n.d.) <em>Tuning the hyper-parameters of an estimator</em>. Available at: <a href="https://scikit-learn.org/stable/modules/grid_search.html">https://scikit-learn.org/stable/modules/grid_search.html</a> (Accessed: 10 October 2026).</p>
 </div>
 </div>
 </div>
