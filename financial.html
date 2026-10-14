@@ -7518,32 +7518,33 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="M508-Big-Data-Analytics-%E2%80%94-NLP-project">M508 Big Data Analytics — NLP project<a class="anchor-link" href="#M508-Big-Data-Analytics-%E2%80%94-NLP-project">¶</a></h1><h2 id="Project-title:-Consumer-Financial-Complaint-Classification-Using-Natural-Language-Processing">Project title: Consumer Financial Complaint Classification Using Natural Language Processing<a class="anchor-link" href="#Project-title:-Consumer-Financial-Complaint-Classification-Using-Natural-Language-Processing">¶</a></h2><p><strong>1. Dataset selection and project objective</strong>
-<strong>Dataset:</strong> Consumer Complaints Dataset for NLP
+<strong>Dataset:</strong> Consumer Financial Complaint Classification Using NLP.
 <strong>Source:</strong> <strong>Source:</strong> <a href="https://www.kaggle.com/datasets/shashwatwork/consume-complaints-dataset-fo-nlp">https://www.kaggle.com/datasets/shashwatwork/consume-complaints-dataset-fo-nlp</a></p>
 <p><strong>1.1 Business problem</strong>
-Banks and financial firms receive thousands of written complaints about credit reports, debt collection, loans, cards and banking. Staff currently read each one and decide which team should handle it. When volume grows, this becomes slow and inconsistent — the same type of complaint can end up in different departments depending on who reads it.</p>
-<p>This project builds an NLP system that reads the complaint text and predicts the most likely product category so complaints can be routed faster.</p>
+Banks and financial companies get thousands of complaints from people in writing regarding credit reports, debt collection, loans, cards and banking. Staff read each one, and currently determine which team to pass on to. As the volume increases, this will become slow and inconsistent which can result in a complaint going to different departments, depending on the reader.</p>
+<p>This project develops an NLP system to predict most probable product category to route the complaints faster, as the text of the complaint is read.</p>
 <p><strong>1.2 Why NLP fits</strong>
-Complaints are free-text. Customers describe the same problem in many different ways. NLP turns that unstructured text into features a model can learn from.</p>
+Complaints are free-text. The same issue is expressed in various ways by customers. NLP transforms the unstructured text into features to which a model can be trained.</p>
 <p><strong>Questions this project answers</strong></p>
 <ul>
-<li>Can complaint text predict the product category?</li>
-<li>Which traditional model works best?</li>
-<li>Does performance stay even across all categories?</li>
-<li>Where does the model fail most often?</li>
-<li>Could it help staff with initial routing?</li>
+<li>If a person writes a complaint about a product, is it possible to predict the type of product from the text?</li>
+<li>What is the best traditional model?</li>
+<li>Is performance consistent in all categories?
+Areas of model failure:</li>
+<li>Are there examples of when it could support staff with initial routing?</li>
 </ul>
 <p><strong>1.3 Objectives</strong></p>
 <ol>
 <li>Explore and clean the data</li>
-<li>Check imbalance, missing values and text length</li>
-<li>Convert text to TF-IDF features</li>
-<li>Train and compare classifiers</li>
-<li>Evaluate with proper metrics</li>
+<li>Check for imbalance, missing values and length of text.</li>
+<li>Train the TF-IDF model using the training dataset.</li>
+<li>Test the model with the test data.</li>
+<li>Train and test classifiers</li>
+<li>Assess using appropriate criteria</li>
 <li>Analyse errors</li>
-<li>Give practical business recommendations</li>
+<li>Make practical business suggestions</li>
 </ol>
-<p>The model only predicts a category. It does not decide if a complaint is valid or what compensation is due.</p>
+<p>The model only predicts the category. It does not determine whether a complaint is valid or what compensation is to be awarded.</p>
 </div>
 </div>
 </div>
@@ -7555,14 +7556,14 @@ Complaints are free-text. Customers describe the same problem in many different 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="2.-High-level-system-design">2. High-level system design<a class="anchor-link" href="#2.-High-level-system-design">¶</a></h1><ol>
-<li><strong>Data collection</strong> – download the public complaint dataset</li>
+<li><strong>Data collection</strong> – Public complaint data is downloaded</li>
 <li><strong>Inspection &amp; cleaning</strong> – missing values, duplicates, label quality</li>
-<li><strong>Preprocessing &amp; TF-IDF</strong> – normalise text and turn it into numbers</li>
+<li><strong>Preprocessing &amp; TF-IDF</strong> – normalise text and convert into numbers</li>
 <li><strong>Model training</strong> – Naive Bayes, Logistic Regression, Linear SVM</li>
-<li><strong>Evaluation &amp; error analysis</strong> – macro-F1, precision, recall, confusion matrix</li>
-<li><strong>Business recommendations</strong> – human-reviewed routing suggestions</li>
+<li><strong>Evaluation &amp; error analysis</strong> – macro-F1, precision, recall and confusion matrix</li>
+<li><strong>Business recommendations</strong> – human reviewed routing recommendations</li>
 </ol>
-<p>Each step has a clear role: cleaning makes the input consistent, TF-IDF creates usable features, models learn the patterns, and evaluation shows how well the system works on unseen complaints.</p>
+<p>The steps are simple: clean the data to get a uniform input, create the TF-IDF features, use models to find the patterns, and finally evaluate the system with a feedback on how well the system works on real-world complaints not used for training..</p>
 </div>
 </div>
 </div>
@@ -7582,7 +7583,7 @@ Complaints are free-text. Customers describe the same problem in many different 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -7600,7 +7601,7 @@ Complaints are free-text. Customers describe the same problem in many different 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># load dataset</span>
@@ -7715,7 +7716,7 @@ name of columns in dataset:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#  Detect the columns</span>
@@ -7783,7 +7784,7 @@ Target column detected: product
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create a working dataset</span>
@@ -7910,7 +7911,7 @@ These two fields are all we need for classification. Blank narratives give no fe
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="5.-Data-quality-checks-and-exploratory-data-analysis">5. Data-quality checks and exploratory data analysis<a class="anchor-link" href="#5.-Data-quality-checks-and-exploratory-data-analysis">¶</a></h1><p>Before training anything we need to know the data. Missing values, duplicates or heavy class imbalance can make results look better (or worse) than they really are.</p>
+<h1 id="5.-Checks-for-data-quality-and-exploratory-data-analysis-(EDA)">5. Checks for data quality and exploratory data analysis (EDA)<a class="anchor-link" href="#5.-Checks-for-data-quality-and-exploratory-data-analysis-(EDA)">¶</a></h1><p>Before training anything we need to know the data. Results may be more attractive (or unattractive) than they are when there are missing values, duplications or extreme class imbalance..</p>
 </div>
 </div>
 </div>
@@ -7919,7 +7920,7 @@ These two fields are all we need for classification. Blank narratives give no fe
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check missing values and duplicates</span>
@@ -7973,7 +7974,7 @@ count for duplicate narratives, regardless of label:
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
 <p><strong>Note on duplicates</strong><br/>
-Duplicate text with different labels can signal inconsistent labelling. For now I just report the counts. Removing them is optional — if you do remove any, document why and how many rows were affected.</p>
+Consistent labelling can be indicated by the duplication of text with different labels. For the time being I'm only reporting on the counts. You can choose to remove them or not, but if you do, note why and how many rows were removed.</p>
 </div>
 </div>
 </div>
@@ -7982,7 +7983,7 @@ Duplicate text with different labels can signal inconsistent labelling. For now 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Examine the target distribution</span>
@@ -8156,7 +8157,7 @@ Duplicate text with different labels can signal inconsistent labelling. For now 
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
 <p><strong>Class distribution</strong><br/>
-One category (credit reporting) dominates. Accuracy alone can look good just by predicting the majority class. That is why we will also look at macro-F1 and per-class recall.</p>
+One category (the so-called credit reporting) has predominance. If the accuracy is good, it's only because it is correctly predicting the majority class. Therefore we'll also examine macro-F1 and per-class recall.</p>
 </div>
 </div>
 </div>
@@ -8165,7 +8166,7 @@ One category (credit reporting) dominates. Accuracy alone can look good just by 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Analyse complaint length</span>
@@ -8289,7 +8290,7 @@ One category (credit reporting) dominates. Accuracy alone can look good just by 
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
 <p><strong>Text length</strong><br/>
-Some complaints are very short, others are long. The chart is capped at the 99th percentile so the distribution is easier to read. Long complaints are still kept in the data.</p>
+Some complaints are very short, others are long. The upper limit of the chart has been set to the 99th percentile for easier charting of the distribution. The data is still retained for long complaints.</p>
 </div>
 </div>
 </div>
@@ -8300,7 +8301,7 @@ Some complaints are very short, others are long. The chart is capped at the 99th
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="6.-Text-preprocessing">6. Text preprocessing<a class="anchor-link" href="#6.-Text-preprocessing">¶</a></h1><p>I keep preprocessing light. Lowercasing and cleaning URLs help consistency, but aggressive removal of stop-words or stemming can destroy meaning (e.g. “not authorised”). Product names and financial terms are often useful signals, so they stay.</p>
+<h1 id="6.-Text-preprocessing">6. Text preprocessing<a class="anchor-link" href="#6.-Text-preprocessing">¶</a></h1><p>In this section, I continue to preprocess light. Lowercasing and cleaning URLs is beneficial for consistency but not doing it too aggressively can lose meaning (e.g. “not authorised”). Product names and financial terms are sometimes helpful indicators and they remain.</p>
 </div>
 </div>
 </div>
@@ -8309,7 +8310,7 @@ Some complaints are very short, others are long. The chart is capped at the 99th
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Clean the complaint text</span>
@@ -8417,7 +8418,7 @@ Some complaints are very short, others are long. The chart is capped at the 99th
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
 <p><strong>What the cleaner does</strong><br/>
-Lowercasing makes “Bank” and “bank” the same. URLs are replaced so every web address does not become a unique feature. Extra whitespace is removed. Stop-word removal and stemming are left for later experiments.</p>
+The lowercase version of “Bank” is “bank”. All URLs have been replaced, so that no web address is a single unique feature. Additional spaces are stripped off. Stop-word removal and stemming are left for future experiments.</p>
 </div>
 </div>
 </div>
@@ -8428,7 +8429,7 @@ Lowercasing makes “Bank” and “bank” the same. URLs are replaced so every
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="7.-Split-the-data-into-training-and-test-sets">7. Split the data into training and test sets<a class="anchor-link" href="#7.-Split-the-data-into-training-and-test-sets">¶</a></h1><p>80 % for training, 20 % for final evaluation. Stratified so both sets keep roughly the same category mix. The test set is touched only once, at the end.</p>
+<h1 id="7.-Divide-data-into-training-data-and-test-data">7. Divide data into training data and test data<a class="anchor-link" href="#7.-Divide-data-into-training-data-and-test-data">¶</a></h1><p>The ratio between training and final evaluation is 80%:20%. Stratified to maintain approximately the same category mix for both sets. The test set is accessed just once, at the end..</p>
 </div>
 </div>
 </div>
@@ -8437,7 +8438,7 @@ Lowercasing makes “Bank” and “bank” the same. URLs are replaced so every
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
@@ -8615,7 +8616,7 @@ Test class proportions:
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
 <p><strong>Reproducibility</strong><br/>
-<code>random_state=42</code> keeps the split the same every run. All tuning and model choice happen on the training data (via cross-validation). The test set stays completely held out.</p>
+The split is the same every time the program is run if you use the same value for random_state, such as <code>random_state=42</code>. Tuning is performed on the training data and so is the choice of the model performed (cross-validation). The test set stays completely held out.</p>
 </div>
 </div>
 </div>
@@ -8626,7 +8627,7 @@ Test class proportions:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="8.-Feature-engineering-with-TF-IDF">8. Feature engineering with TF-IDF<a class="anchor-link" href="#8.-Feature-engineering-with-TF-IDF">¶</a></h1><p>Models need numbers, not raw text. TF-IDF weights words that appear often in one complaint but rarely across the whole set. I use both unigrams (single words) and bigrams (word pairs such as “late payment”) so the model can catch useful short phrases.</p>
+<h1 id="8.-Feature-engineering-with-TF-IDF">8. Feature engineering with TF-IDF<a class="anchor-link" href="#8.-Feature-engineering-with-TF-IDF">¶</a></h1><p>Models need numbers, not raw text. TF-IDF weights words that appear often in one complaint but rarely across the whole set. Both single words (unigrams) and word pairs (bigrams) like “late payment” are used to allow the model to capture useful short phrases.</p>
 </div>
 </div>
 </div>
@@ -8635,7 +8636,7 @@ Test class proportions:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">TfidfVectorizer</span>
@@ -8718,7 +8719,7 @@ Number of vocabulary terms: 50000
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define the models</span>
@@ -8792,7 +8793,7 @@ Number of vocabulary terms: 50000
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
 <p><strong>Pipeline notes</strong><br/>
-Each model is wrapped with its own TF-IDF step so vectorisation never sees the test data. <code>class_weight="balanced"</code> gives minority classes more influence. These are starting settings — cross-validation will tell us which model is actually best.</p>
+Vectorisation never touches the test data, each model is individually wrapped with the TF-IDF step, and with <code>class_weight="balanced"</code>, minority classes have more influence. These are starting settings; it is cross-validation that will tell us which one is the best.</p>
 </div>
 </div>
 </div>
@@ -8803,8 +8804,8 @@ Each model is wrapped with its own TF-IDF step so vectorisation never sees the t
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>9.1 Why use a majority baseline?</strong></p>
-<p>If one category is very common, always predicting that category can give decent accuracy without reading any text. The real models need to beat this baseline to show that the complaint text actually helps.</p>
+<p><strong>9.1 What are the reasons for using a majority baseline?</strong></p>
+<p>If one of the categories is very common, and always predicting that category might result in reasonable accuracy without reading any text. The real models must outperform this value to demonstrate the complaint text.</p>
 </div>
 </div>
 </div>
@@ -8813,7 +8814,7 @@ Each model is wrapped with its own TF-IDF step so vectorisation never sees the t
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Compare models using cross-validation</span>
@@ -8956,7 +8957,7 @@ Evaluating: Linear SVM
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
 <p><strong>Cross-validation</strong><br/>
-3-fold stratified CV on the training data. Mean macro-F1 shows average performance; the standard deviation shows how stable the score is across folds. The test set is still untouched.</p>
+To train on 3-fold stratified CV. The average score, macro-F1, is a reasonable value, while the standard deviation indicates the consistency of the score across folds. Test set has not been used yet.</p>
 </div>
 </div>
 </div>
@@ -8967,7 +8968,7 @@ Evaluating: Linear SVM
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="10.-Final-model-evaluation">10. Final model evaluation<a class="anchor-link" href="#10.-Final-model-evaluation">¶</a></h1><p>I pick the model with the highest mean macro-F1 from cross-validation, retrain it on the full training set, and evaluate once on the held-out test set. This avoids choosing a model by peeking at test scores.</p>
+<h1 id="10.-Final-model-evaluation">10. Final model evaluation<a class="anchor-link" href="#10.-Final-model-evaluation">¶</a></h1><p>I select the model with the greatest mean macro-F1 score from cross-validation, and then retrain my model on the entire training set before performing a final test on the held-out test set. This prevents the selection of a model by merely looking at the test scores.</p>
 </div>
 </div>
 </div>
@@ -8976,7 +8977,7 @@ Evaluating: Linear SVM
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Train the selected model</span>
@@ -9017,7 +9018,7 @@ Final test evaluation completed.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate evaluation metrics</span>
@@ -9147,14 +9148,14 @@ mortgages_and_loans       0.85      0.86      0.86      3798
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>How to read the metrics</strong></p>
+<p><strong>To read the metrics, follow the guidelines below:</strong></p>
 <ul>
-<li><strong>Accuracy</strong> – overall correct predictions</li>
-<li><strong>Precision</strong> – of the complaints sent to a category, how many truly belong there</li>
-<li><strong>Recall</strong> – of the real complaints in a category, how many were found</li>
-<li><strong>F1 / Macro-F1</strong> – balance of precision and recall (macro treats every class equally)</li>
+<li><strong>Overall</strong> Correct Predictions (Accuracy)</li>
+<li><strong>Precision</strong> – percentage of complaints that come to a category that are actually from that category</li>
+<li><strong>Recall</strong> – how many complaints in a category were found of the actual complaints in that category<br/>
+<strong>F1 / Macro-F1</strong> – balance of precision and recall (macro treats each class equally)</li>
 </ul>
-<p>For routing, both precision and recall matter. Low recall means complaints go to the wrong team; low precision means staff waste time on false suggestions.</p>
+<p>Both precision and recall are important for routing. Low recall leads to complaints going to the wrong team, low precision means staff spending time on false suggestions.</p>
 </div>
 </div>
 </div>
@@ -9165,7 +9166,7 @@ mortgages_and_loans       0.85      0.86      0.86      3798
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="11.-Confusion-matrix">11. Confusion matrix<a class="anchor-link" href="#11.-Confusion-matrix">¶</a></h1><p>Shows which categories are predicted correctly and which pairs are most often confused.</p>
+<h1 id="11.-Confusion-matrix">11. Confusion matrix<a class="anchor-link" href="#11.-Confusion-matrix">¶</a></h1><p>Indicates the categories that are likely to be predicted correctly and those most likely to be confused.</p>
 </div>
 </div>
 </div>
@@ -9174,7 +9175,7 @@ mortgages_and_loans       0.85      0.86      0.86      3798
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Visualise the confusion matrix</span>
@@ -9222,7 +9223,7 @@ mortgages_and_loans       0.85      0.86      0.86      3798
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Explanation:</strong></p>
 <p><strong>Reading the matrix</strong><br/>
-Rows are true labels, columns are predictions. The diagonal is correct. Off-diagonal cells show the main confusions. Check which categories have weak recall and which pairs share similar language.</p>
+Row labels are true, column predictions. The diagonal is on the right. The main confusions are illustrated in the off-diagonal cells. Look at the categories that are hard to remember and look for categories that use similar language.</p>
 </div>
 </div>
 </div>
@@ -9242,7 +9243,7 @@ Rows are true labels, columns are predictions. The diagonal is correct. Off-diag
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Inspect incorrect predictions</span>
@@ -9527,7 +9528,7 @@ Many mistakes involve short text, complaints that mention more than one product,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Tune Logistic Regression</span>
@@ -9625,12 +9626,12 @@ The best C is chosen by mean validation macro-F1. If the scores are close, the s
 <li>Good test scores do not automatically mean lower cost or happier customers in production</li>
 </ul>
 <h3 id="Business-recommendations">Business recommendations<a class="anchor-link" href="#Business-recommendations">¶</a></h3><ol>
-<li>Use the model only as a suggestion — staff should still confirm the category</li>
-<li>Track precision and recall per category, not just overall accuracy</li>
-<li>Review the most common error pairs and fix labels where possible</li>
-<li>Re-train when products or language change</li>
-<li>Keep personal data protected</li>
-<li>Run a small pilot first to measure real impact on routing time and workload</li>
+<li>The model is only a suggestion and staff should still verify the category</li>
+<li>Measure per category precision and recall, not just overall accuracy</li>
+<li>Review most common error pairs and fix labels where possible</li>
+<li>Re-train when products or languages change</li>
+<li>Protect personal data</li>
+<li>Run a small pilot first to measure actual impact on routing time and workload</li>
 </ol>
 </div>
 </div>
