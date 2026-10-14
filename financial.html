@@ -7577,12 +7577,12 @@ Complaints are free-text. Customers describe the same problem in many different 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=01336f6b">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=01336f6b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -7590,22 +7590,7 @@ Complaints are free-text. Customers describe the same problem in many different 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Libraries imported successfully."</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Libraries imported successfully.
-</pre>
 </div>
 </div>
 </div>
@@ -7615,26 +7600,17 @@ Complaints are free-text. Customers describe the same problem in many different 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># load dataset</span>
-<span class="n">DATA_PATH</span> <span class="o">=</span> <span class="s2">"complaints_processed.csv"</span>
+<span class="n">data_frme</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"complaints_processed.csv"</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">DATA_PATH</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"CSV files in the current folder:"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">([</span><span class="n">file</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"."</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.csv"</span><span class="p">)])</span>
-    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
-        <span class="s2">"Please update DATA_PATH to your downloaded CSV filename."</span>
-    <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"shape of data set:"</span><span class="p">,</span> <span class="n">data_frme</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">name of columns in dataset:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_frme</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATA_PATH</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Dataset shape:"</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Column names:"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data_frme</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -7647,9 +7623,9 @@ Complaints are free-text. Customers describe the same problem in many different 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Dataset shape: (162421, 3)
+<pre>shape of data set: (162421, 3)
 
-Column names:
+name of columns in dataset:
 ['Unnamed: 0', 'product', 'narrative']
 </pre>
 </div>
@@ -7739,20 +7715,20 @@ Column names:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#  Detect the columns</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">normalise_column_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">column_name_normalisation</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[^a-z0-9]+"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
 
 
 <span class="n">column_lookup</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">normalise_column_name</span><span class="p">(</span><span class="n">column</span><span class="p">):</span> <span class="n">column</span>
-    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">column_name_normalisation</span><span class="p">(</span><span class="n">column</span><span class="p">):</span> <span class="n">column</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">data_frme</span><span class="o">.</span><span class="n">columns</span>
 <span class="p">}</span>
 
-<span class="n">text_candidates</span> <span class="o">=</span> <span class="p">[</span>
+<span class="n">text_candidate_list</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">"narrative"</span><span class="p">,</span>
     <span class="s2">"consumercomplaintnarrative"</span><span class="p">,</span>
     <span class="s2">"complaintnarrative"</span><span class="p">,</span>
@@ -7761,7 +7737,7 @@ Column names:
     <span class="s2">"description"</span>
 <span class="p">]</span>
 
-<span class="n">target_candidates</span> <span class="o">=</span> <span class="p">[</span>
+<span class="n">target_candidate_list</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">"product"</span><span class="p">,</span>
     <span class="s2">"category"</span><span class="p">,</span>
     <span class="s2">"complaintcategory"</span><span class="p">,</span>
@@ -7769,20 +7745,20 @@ Column names:
     <span class="s2">"target"</span>
 <span class="p">]</span>
 
-<span class="n">text_col</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">column_lookup</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">text_candidates</span>
+<span class="n">col_text</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">column_lookup</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">text_candidate_list</span>
      <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">column_lookup</span><span class="p">),</span>
     <span class="kc">None</span>
 <span class="p">)</span>
 
-<span class="n">target_col</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">column_lookup</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">target_candidates</span>
+<span class="n">col_target</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">column_lookup</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">target_candidate_list</span>
      <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">column_lookup</span><span class="p">),</span>
     <span class="kc">None</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Detected text column:"</span><span class="p">,</span> <span class="n">text_col</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Detected target column:"</span><span class="p">,</span> <span class="n">target_col</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Text column detected:"</span><span class="p">,</span> <span class="n">col_text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Target column detected:"</span><span class="p">,</span> <span class="n">col_target</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7795,8 +7771,8 @@ Column names:
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Detected text column: narrative
-Detected target column: product
+<pre>Text column detected: narrative
+Target column detected: product
 </pre>
 </div>
 </div>
@@ -7807,12 +7783,12 @@ Detected target column: product
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create a working dataset</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">text_col</span><span class="p">,</span> <span class="n">target_col</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data_frme</span><span class="p">[[</span><span class="n">col_text</span><span class="p">,</span> <span class="n">col_target</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"text"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">]</span>
 
@@ -7835,8 +7811,8 @@ Detected target column: product
     <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">""</span><span class="p">)</span>
 <span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Rows after removing blank text or labels:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of product categories:"</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"count after removing blank text or labels from rows:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Product categories count:"</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
@@ -7851,8 +7827,8 @@ Detected target column: product
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Rows after removing blank text or labels: 162411
-Number of product categories: 5
+<pre>count after removing blank text or labels from rows: 162411
+Product categories count: 5
 </pre>
 </div>
 </div>
@@ -7943,20 +7919,20 @@ These two fields are all we need for classification. Blank narratives give no fe
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check missing values and duplicates</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Missing values:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"value missing in dataset :"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">"text"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">]]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Blank complaint narratives:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">count of blank complaint narratives:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">((</span><span class="n">data</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Duplicate text-label records:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">value preset for duplicate  records of text-label:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">"text"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Duplicate narratives, regardless of label:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">count for duplicate narratives, regardless of label:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -7970,18 +7946,18 @@ These two fields are all we need for classification. Blank narratives give no fe
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Missing values:
+<pre>value missing in dataset :
 text     0
 label    0
 dtype: int64
 
-Blank complaint narratives:
+count of blank complaint narratives:
 0
 
-Duplicate text-label records:
+value preset for duplicate  records of text-label:
 37735
 
-Duplicate narratives, regardless of label:
+count for duplicate narratives, regardless of label:
 37939
 </pre>
 </div>
@@ -8006,17 +7982,17 @@ Duplicate text with different labels can signal inconsistent labelling. For now 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Examine the target distribution</span>
 
 <span class="n">class_counts</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of complaints per category:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"As per category number of complaints :"</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">class_counts</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s2">"count"</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Percentage per category:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"As per category Percentage value:"</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span>
     <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
     <span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -8044,7 +8020,7 @@ Duplicate text with different labels can signal inconsistent labelling. For now 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Number of complaints per category:
+<pre>As per category number of complaints :
 </pre>
 </div>
 </div>
@@ -8105,7 +8081,7 @@ Duplicate text with different labels can signal inconsistent labelling. For now 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Percentage per category:
+<pre>As per category Percentage value:
 </pre>
 </div>
 </div>
@@ -8189,7 +8165,7 @@ One category (credit reporting) dominates. Accuracy alone can look good just by 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Analyse complaint length</span>
@@ -8333,7 +8309,7 @@ Some complaints are very short, others are long. The chart is capped at the 99th
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Clean the complaint text</span>
@@ -8461,7 +8437,7 @@ Lowercasing makes “Bank” and “bank” the same. URLs are replaced so every
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
@@ -8659,7 +8635,7 @@ Test class proportions:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">TfidfVectorizer</span>
@@ -8742,7 +8718,7 @@ Number of vocabulary terms: 50000
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define the models</span>
@@ -8837,7 +8813,7 @@ Each model is wrapped with its own TF-IDF step so vectorisation never sees the t
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Compare models using cross-validation</span>
@@ -9000,14 +8976,14 @@ Evaluating: Linear SVM
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Train the selected model</span>
 <span class="n">best_model_name</span> <span class="o">=</span> <span class="n">cv_table</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"model"</span><span class="p">]</span>
 <span class="n">best_model</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="n">best_model_name</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Selected model:"</span><span class="p">,</span> <span class="n">best_model_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mmodel Selected:"</span><span class="p">,</span> <span class="n">best_model_name</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Mean cross-validation macro-F1:"</span><span class="p">,</span>
       <span class="nb">round</span><span class="p">(</span><span class="n">cv_table</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"mean_macro_f1"</span><span class="p">],</span> <span class="mi">4</span><span class="p">))</span>
 
@@ -9028,7 +9004,7 @@ Evaluating: Linear SVM
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Selected model: Linear SVM
+<pre>Mmodel Selected: Linear SVM
 Mean cross-validation macro-F1: 0.8462
 Final test evaluation completed.
 </pre>
@@ -9041,7 +9017,7 @@ Final test evaluation completed.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate evaluation metrics</span>
@@ -9198,7 +9174,7 @@ mortgages_and_loans       0.85      0.86      0.86      3798
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Visualise the confusion matrix</span>
@@ -9266,7 +9242,7 @@ Rows are true labels, columns are predictions. The diagonal is correct. Off-diag
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Inspect incorrect predictions</span>
@@ -9551,7 +9527,7 @@ Many mistakes involve short text, complaints that mention more than one product,
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Tune Logistic Regression</span>
