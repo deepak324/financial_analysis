@@ -1,0 +1,6 @@
+Complaint Text,Confidence Threshold,Prediction Result,timestamp
+there is fraud of 30 dollar in my credit card statement,0.6,"**Predicted Category:** credit_card
+
+**Confidence:** 0.00%
+
+⚠️ Low confidence (0.00%) — Recommend human review",2026-11-07 11:00:13.324392
